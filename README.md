@@ -1,4 +1,4 @@
-# FieldLevel Data Engineering Entry Level Position Take Home Project 
+# FieldLevel Entry Level Data Engineering Position Take Home Project 
 
 ## Purpose
 
@@ -6,7 +6,7 @@ The goal of this project is to help us understand your data engineering abilitie
 
 ## Objective
 
-The objective of the exercise is to implement a data stream processor.  The application needs to process data changes from a data source (an OLTP database) and produce an updated transformed result.  The input set is constantly changing so your application needs to continueously recompute the transformation in near real time.  You can use any technology stack that can be built as a docker container (.net, python, etc)
+The objective of the exercise is to implement a data stream processor.  The application needs to process data changes from a data source (an OLTP database) and produce an updated transformed result.  The input set is constantly changing so your application needs to continuously recompute the transformation on the changed data in near real time.  You can use any technology stack just so long as it can be built as a docker container (.net, python, etc)
 
 
 ![Complete Setup](img/overview.png)
@@ -45,7 +45,13 @@ The project requires you to consume changes from an input data set, perform a tr
 
 #### Transformation logic
 
-The application should maintain a count of Athletes in each "Sport" and "Recruiting Class Year" .
+The application needs to maintain a count of Athletes in each "Sport" and "Recruiting Class Year" .  
+
+Example Input
+![Complete Setup](img/Athletes.png)
+
+Example Output
+![Complete Setup](img/SportClassYearSummary.png)
 
 Note that you are free to include any other publicly available technologies (e.g. Kafka, Redis, Ignite) into your solution if you so desire.  It isn't a requirement but whatever you decide, just be sure to package it up so it can be run in the same docker environment. 
 
