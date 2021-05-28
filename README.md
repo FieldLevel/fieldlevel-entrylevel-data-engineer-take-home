@@ -160,7 +160,7 @@ CREATE TABLE dbo.testControl(
 
 ##  Unused Services
 
-** These services are not used and there existnace can be ignored **
+**These services are not used and there existance can be ignored**
 
 ### eventlogs-db.fl-eventlogs Database
 
