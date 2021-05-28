@@ -1,0 +1,139 @@
+CREATE DATABASE [fl-eventlogs]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'fl-eventlogs', FILENAME = N'/var/opt/mssql/data/fl-eventlogs.mdf' , SIZE = 20480KB , MAXSIZE = 1024000KB , FILEGROWTH = 51200KB )
+ LOG ON 
+( NAME = N'fl-eventlogs_log', FILENAME = N'/var/opt/mssql/data/fl-eventlogs_log.ldf' , SIZE = 8192KB , MAXSIZE = 204800KB , FILEGROWTH = 20480KB )
+GO
+ALTER DATABASE [fl-eventlogs] SET COMPATIBILITY_LEVEL = 150
+GO
+ALTER DATABASE [fl-eventlogs] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [fl-eventlogs] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [fl-eventlogs] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [fl-eventlogs] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [fl-eventlogs] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [fl-eventlogs] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [fl-eventlogs] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [fl-eventlogs] SET AUTO_CREATE_STATISTICS OFF
+GO
+ALTER DATABASE [fl-eventlogs] SET AUTO_UPDATE_STATISTICS OFF 
+GO
+ALTER DATABASE [fl-eventlogs] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [fl-eventlogs] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [fl-eventlogs] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [fl-eventlogs] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [fl-eventlogs] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [fl-eventlogs] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [fl-eventlogs] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [fl-eventlogs] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [fl-eventlogs] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [fl-eventlogs] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [fl-eventlogs] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [fl-eventlogs] SET  READ_WRITE 
+GO
+ALTER DATABASE [fl-eventlogs] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [fl-eventlogs] SET  MULTI_USER 
+GO
+ALTER DATABASE [fl-eventlogs] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [fl-eventlogs] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [fl-eventlogs] SET DELAYED_DURABILITY = DISABLED 
+GO
+USE [fl-eventlogs]
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET LEGACY_CARDINALITY_ESTIMATION = Off;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET LEGACY_CARDINALITY_ESTIMATION = Primary;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = 0;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET MAXDOP = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SNIFFING = On;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET PARAMETER_SNIFFING = Primary;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = Off;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES = Primary;
+GO
+USE [fl-eventlogs]
+GO
+IF NOT EXISTS (SELECT name FROM sys.filegroups WHERE is_default=1 AND name = N'PRIMARY') ALTER DATABASE [fl-eventlogs] MODIFY FILEGROUP [PRIMARY] DEFAULT
+GO
+
+
+
+
+
+CREATE TABLE [dbo].[AthleteProfileViewLog](
+	[profileviewlogid] [bigint] NOT NULL IDENTITY(1,1),
+	[userid] [int] NULL,
+	[athleteid] [int] NULL,
+	[dateutc] [datetime] NULL,
+	[clientid] [uniqueidentifier] NULL,
+    CONSTRAINT [pk_store_VideoInteractionLog] PRIMARY KEY CLUSTERED (	[profileviewlogid] ) WITH (DATA_COMPRESSION=PAGE)
+) 
+GO
+
+
+
+CREATE OR ALTER PROCEDURE dbo.CreateAthleteProfileViewEvent @AthleteId int 
+as
+
+set xact_abort on
+set nocount on
+
+declare @userId int 
+select @userId = cast((RAND() * 200000) as int )
+
+INSERT INTO [dbo].[AthleteProfileViewLog](
+	[userid] ,
+	[athleteid],
+	[dateutc] ,
+	[clientid]
+    )
+VALUES (
+    @userId 
+    ,@AthleteId
+    ,sysutcdatetime()
+    ,newid() 
+
+)
+
+
+
+
+return
+GO
+
+
+
+/*  this table is used for testing and validation of what the correct results should be  */
+CREATE TABLE [dbo].[Athlete](
+	athleteId int NOT NULL,
+    sport nvarchar(50) not null ,
+	recruitingClassYear smallint NULL,
+    PRIMARY KEY CLUSTERED (	[athleteId] ) WITH (DATA_COMPRESSION=PAGE)
+) 
+GO

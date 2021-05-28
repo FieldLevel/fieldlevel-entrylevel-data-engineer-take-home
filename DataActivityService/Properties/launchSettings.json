@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "DataActivityService": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "EVENTLOGS": "localhost,44332",
+        "CENTRAL": "localhost,44331",
+        "SA_PASSWORD": "T@k3H0m3",
+        "SERVICE_NAME": "FL_DATA_EXCERISE_SERVICE"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
