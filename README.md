@@ -47,11 +47,8 @@ The project requires you to consume changes from an input data set, perform a tr
 
 The application needs to maintain a count of Athletes in each "Sport" and "Recruiting Class Year" .  
 
-Example Input
-![Complete Setup](img/Athletes.png)
-
-Example Output
-![Complete Setup](img/SportClassYearSummary.png)
+Example Input and Output
+![Complete Setup](img/exampe.png)
 
 Note that you are free to include any other publicly available technologies (e.g. Kafka, Redis, Ignite) into your solution if you so desire.  It isn't a requirement but whatever you decide, just be sure to package it up so it can be run in the same docker environment. 
 
