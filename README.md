@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The goal of this project is to help us understand your data engineering abilities.  We do not expect you to spend more than a few hours completing the exercise.  There's no hard time limit so work on it at your convenience.  Take your time and submit a solution you feel proud of and ready to discuss with us.   Also, questions are definately welcome, so ask away.
+The goal of this project is to help us understand your data engineering abilities.  We do not expect you to spend more than a few hours completing the exercise.  There's no hard time limit so work on it at your convenience.  Take your time and submit a solution you feel proud of and ready to discuss with us.   Also, questions are definitely welcome, so ask away.
 
 ## Objective
 
@@ -15,7 +15,7 @@ The objective of the exercise is to implement a data stream processor.  The appl
 ## Setup
 
 #### Get the project code
-1. Import the exercise repository to your personal Github account. Using github's import tool (https://github.com/new/import) import this url: https://github.com/FieldLevel/fieldlevel-data-engineer-take-home/
+1. Import the exercise repository to your personal Github account. Using github's import tool (https://github.com/new/import) import this url: https://github.com/FieldLevel/fieldlevel-entrylevel-data-engineer-take-home
 1. Invite our github user "fl-codereview" to be a collaborator on your new repository
 1. Get your new repository on your local machine
 
