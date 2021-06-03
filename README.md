@@ -63,7 +63,7 @@ The transformed output should be streamed to a table `SportClassYearSummary` on 
  *  include a database script with DDL for `SportClassYearSummary` as well as any other DDL you deem necessary.
  *  include any deployment instructions in a readme.md file.  These can include manual steps that need to be run first.
  *  invite our github user "fl-codereview" to be a collaborator on the repository
- *  create a pull request against your Github repository
+ *  create a **pull request** against your Github repository (your changes should be committed to a separate branch in your repo)
  *  let us (your interview coordinator) know when you are ready to review
 
 
